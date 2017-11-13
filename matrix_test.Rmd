@@ -1,0 +1,54 @@
+---
+title: "Matrix_test"
+author: "H Qin"
+date: "11/12/2017"
+output: html_document
+---
+
+```{r}
+library(Matrix)
+
+```
+
+```{r}
+
+A <- matrix(c(13, -4, 2, -4, 11, -2, 2, -2, 8), 3, 3, byrow=TRUE)
+A
+
+```
+
+```{r}
+rankMatrix(A)
+```
+
+```{r}
+rankMatrix(cbind(1, 0, 1:3))
+```
+
+```{r}
+ev <- eigen(A)
+ev
+(values <- ev$values)
+(vectors <- ev$vectors)
+```
+
+The following steps illustrate the main properties of eigenvalues and eigenvectors. We use the notation A=V′ΛVA=V′ΛV to express the decomposition of the matrix AA, where VV is the matrix of eigenvectors and Λ=diag(λ1,λ2,…,λp)Λ=diag(λ1,λ2,…,λp) is the diagonal matrix composed of the ordered eivenvalues, λ1≥λ2≥…λpλ1≥λ2≥…λp.
+
+Orthogonality: Eigenvectors are always orthogonal, V′V=IV′V=I. zapsmall() is handy for cleaning up tiny values.
+```{r}
+crossprod(vectors)
+zapsmall(crossprod(vectors))
+```
+
+```{r}
+eigen(A)
+```
+
+```{r}
+eigen(A %*% A)
+```
+
+```{r}
+rankMatrix(A)
+```
+
